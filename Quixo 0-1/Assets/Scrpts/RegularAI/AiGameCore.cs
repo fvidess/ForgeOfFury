@@ -747,10 +747,12 @@ public class AiGameCore : MonoBehaviour
 
     async void HardAIMove(HardAI hardAI)
     {
+        gamePaused = true;
         aiMoving = true;
         char[,] board = translateBoard();
         Debug.Log("Fernando's mother");
         TimeSpan timeLimit = TimeSpan.FromSeconds(4);
+
 
         (Piece, char) move = await Task.Run(() => hardAI.IterativeDeepening(board, timeLimit, aiFirst));
 
@@ -786,6 +788,7 @@ public class AiGameCore : MonoBehaviour
     }
     async void MediumAIMove(MediumAI mediumAI)
     {
+        gamePaused = true;
         Debug.Log("Fernando's mother");
         char[,] board = translateBoard();
 
